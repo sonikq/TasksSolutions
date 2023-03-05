@@ -1,7 +1,7 @@
-CREATE EXTENSION postgis;
+CREATE EXTENSION IF NOT EXISTS postgis;
 
 ALTER TABLE geo_test.test_point 
-	ADD COLUMN geom geometry(PointZ);
+	ADD COLUMN IF NOT EXISTS geom geometry(PointZ);
 	
 UPDATE geo_test.test_point
 	SET geom = ST_SetSRID(ST_MakePoint(x, y, z), 4326);
